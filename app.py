@@ -14,7 +14,10 @@ st.write(
 st.write(
     "A fair warning, I am limited on compute power hence I cannot train high-res GANs or big models. But you can use code for the training and do a much better work if you have Good GPU's"
 )
-st.markdown("Do give a :stars: if you like the work. Github:")
+st.markdown(
+    "Do give a :stars: if you like the work.  \
+    Github: https://github.com/Atharva-Phatak/Manga-Colorizer"
+)
 file_up = st.file_uploader("Upload an image", type=["jpg", "png"])
 
 
