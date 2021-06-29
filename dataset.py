@@ -6,7 +6,15 @@ from torchvision import transforms
 
 
 class ColorizationDataset(torch.utils.data.Dataset):
+    """PyTorch Style dataset for training our GANs."""
+
     def __init__(self, paths, img_size, split="train") -> None:
+        """Constructor for ColorizationDataset.
+        Args:
+            paths: The paths where images are stored.
+            img_size: The size of images.
+            split: One of train or valid.
+        """
         super(ColorizationDataset, self).__init__()
         self.paths = paths
         if split == "train":

@@ -27,13 +27,14 @@ def lab_to_rgb(L, ab):
 
 
 def to_numpy(tensor):
+    """Convert torch tensor to numpy."""
     return (
         tensor.detach().cpu().numpy() if tensor.requires_grad else tensor.cpu().numpy()
     )
 
 
 def get_input_tensor(image_path):
-
+    """Reads an input image and return required tensors for GANs."""
     infer_transforms = transforms.Resize((256, 256))
     img = Image.open(image_path).convert("RGB")
     img = infer_transforms(img)
@@ -44,20 +45,3 @@ def get_input_tensor(image_path):
     L = img_lab[[0], ...] / 50.0 - 1.0
     L = L.unsqueeze(0)
     return L, org_img
-
-
-def do_inference(image_path):
-
-    L = get_input_tensor(image_path)
-    ort_inputs = {ort_session.get_inputs()[0].name: to_numpy(L)}
-    ort_output = ort_session.run(None, ort_inputs)
-    fake_ab = ort_output[0]
-    fake_ab = torch.from_numpy(fake_ab)
-    rgb_img = lab_to_rgb(L, fake_ab)
-
-    save_image(rgb_img, "new_img.png", nrow=1)
-
-
-if __name__ == "__main__":
-    image_path = "/home/atharvap/Desktop/manga-colorize/my_hero_academia_310_3.jpg"
-    do_inference(image_path)

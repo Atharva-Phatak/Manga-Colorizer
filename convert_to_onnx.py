@@ -6,6 +6,11 @@ import onnx
 
 
 def convert_to_onnx(model_state_dict, inputs):
+    """Method to convert pytorch models to onnx format.
+    Args:
+        model_state_dict: The state dictionary of model.
+        inputs: The input tensor
+    """
     model = smp.Unet(
         encoder_name="efficientnet-b1",
         encoder_weights="imagenet",

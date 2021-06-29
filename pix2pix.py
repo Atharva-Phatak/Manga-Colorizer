@@ -3,11 +3,14 @@ from torchflare.experiments import Experiment
 
 
 class Pix2PixExperiment(Experiment):
+    """Custom class for training Pix2Pix model. TorchFlare makes it easy to write the tre"""
+
     def __init__(self, lambda_l1, **kwargs):
         self.lambda_l1 = lambda_l1
         super(Pix2PixExperiment, self).__init__(**kwargs)
 
     def train_step(self):
+        """Traininig step for the model."""
         y_fake = self.state.model["generator"](self.batch[self.input_key])
 
         # Discriminator Training
