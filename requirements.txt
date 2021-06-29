@@ -1,0 +1,5 @@
+torchflare==0.2.3
+segmentation-models==1.0.1
+streamlit
+onnxruntime
+onnx

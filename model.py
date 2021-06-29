@@ -2,9 +2,11 @@ import torch
 import torch.nn as nn
 
 # Implementation for pix2pix
-
+# For generator we use segmentation-models pytorch library and create a backbone using efficientnet-b1
 # Implementation of Discriminator.
 class PatchDiscriminator(nn.Module):
+    """Discriminator model."""
+
     def __init__(self, input_channels, num_filters=64, n_down=3):
         super().__init__()
         model = [self.get_layers(input_channels, num_filters, norm=False)]
