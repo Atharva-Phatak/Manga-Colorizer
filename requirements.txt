@@ -1,4 +1,4 @@
-torchflare==0.2.3
+torchflare==0.2.4
 segmentation-models==1.0.1
 streamlit
 onnxruntime

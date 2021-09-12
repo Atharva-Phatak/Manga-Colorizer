@@ -40,9 +40,7 @@ if __name__ == "__main__":
     x, y = sample_ds[0]
     batch_size = 1
     inputs = x.unsqueeze(0)
-    convert_to_onnx(
-        model_state_dict=ckpt["model_state_dict"]["generator"], inputs=inputs
-    )
+    convert_to_onnx(model_state_dict=ckpt["model_state_dict"]["generator"], inputs=inputs)
     # Check if onnx works
     onnx_model = onnx.load("generator.onnx")
     onnx.checker.check_model(onnx_model)

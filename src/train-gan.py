@@ -4,7 +4,6 @@ import torch
 import numpy as np
 from model import PatchDiscriminator
 from dataset import ColorizationDataset
-from torchvision.utils import save_image
 from torchflare.experiments import ModelConfig, Experiment
 import torchflare.callbacks as cbs
 import segmentation_models_pytorch as smp
@@ -102,8 +101,6 @@ config = ModelConfig(
     optimizer_params={"generator": {"lr": 2e-4}, "discriminator": {"lr": 2e-4}},
 )
 
-trainer = Pix2PixExperiment(
-    lambda_l1=100, num_epochs=10, fp16=True, seed=42, device="cuda"
-)
+trainer = Pix2PixExperiment(lambda_l1=100, num_epochs=10, fp16=True, seed=42, device="cuda")
 trainer.compile_experiment(model_config=config, callbacks=callbacks)
 trainer.fit_loader(train_dl)
