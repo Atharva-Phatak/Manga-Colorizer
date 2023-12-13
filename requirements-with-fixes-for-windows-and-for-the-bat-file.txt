@@ -1,0 +1,5 @@
+segmentation-models==1.0.1
+streamlit
+onnxruntime
+onnx
+segmentation-models-pytorch
